@@ -1,0 +1,4 @@
+[main]
+binlog_location=/home/myharem/instances/mariadb-10.3.7-linux-glibc_214-x86_64.20307/data
+binlog_basename=tossanc-bin
+mysqlbinlog_exec=mysqlbinlog
