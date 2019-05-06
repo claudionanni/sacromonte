@@ -7,10 +7,15 @@ Minimal config:
 
 
 `[main]`
+
 `port=2934`
+
 `ip=192.168.1.100`
+
 `binlog_location=/data/mariadb`
+
 `binlog_basename=myserver-bin`
+
 `mysqlbinlog_exec=mysqlbinlog`
 
 `
