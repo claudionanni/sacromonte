@@ -1,8 +1,12 @@
 #!/usr/bin/env python
+
+# Returns on http port 2934 the latest GTID found in the binary logs pointed by the config file /etc/sacromonte.cnf
+
 import subprocess
 import configparser
 global listOfBinlogs
 global mb_executable
+global port
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 # Http Server Class
@@ -11,6 +15,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
     # Start from last binlog, -1 index in python lists
     binlog_index=-1
     global listOfBinlogs
+    global port
     self.send_response(200)
     self.send_header('Content-type','text/html')
     self.end_headers()
@@ -46,10 +51,12 @@ def os_readbinlog(binary_log):
 def read_conf():
   global listOfBinlogs
   global mb_executable
+  global port
   # Default config location
-  conf="/etc/sacromonte.cnf"
+  conf="./sacromonte.cnf"
   config = configparser.ConfigParser()
   config.read(conf)
+  conf_po=config['main']['port']
   conf_bl=config['main']['binlog_location']
   conf_bb=config['main']['binlog_basename']
   conf_if=conf_bl + '/' + conf_bb + '.index'
@@ -62,7 +69,7 @@ def read_conf():
 # Main loop
 def run():
   print('Http server starting...')
-  server_address = ('127.0.0.1', 2934)
+  server_address = ('192.168.1.100', 2934)
   httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
   print('Listening on port 2934')
   httpd.serve_forever()
