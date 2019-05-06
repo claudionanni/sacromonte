@@ -6,11 +6,17 @@ Two following lines are the binlog it searched back (latest binlog might not con
 Minimal config:
 `
 [main]
+
 port=2934
+
 ip=192.168.1.100
+
 binlog_location=/data/mariadb
+
 binlog_basename=myserver-bin
+
 mysqlbinlog_exec=mysqlbinlog
+
 `
 
 Execution:   `sudo python3 sacromonte.py`
