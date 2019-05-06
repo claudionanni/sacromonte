@@ -4,18 +4,14 @@ It starts a local httpd server on port 2934 and replies with the GTID on the fir
 Two following lines are the binlog it searched back (latest binlog might not contain any GTID), and the latest binlog.
 
 Minimal config:
-`
-[main]
 
-port=2934
 
-ip=192.168.1.100
-
-binlog_location=/data/mariadb
-
-binlog_basename=myserver-bin
-
-mysqlbinlog_exec=mysqlbinlog
+`[main]`
+`port=2934`
+`ip=192.168.1.100`
+`binlog_location=/data/mariadb`
+`binlog_basename=myserver-bin`
+`mysqlbinlog_exec=mysqlbinlog`
 
 `
 
